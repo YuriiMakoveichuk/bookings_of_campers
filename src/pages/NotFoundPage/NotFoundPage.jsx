@@ -1,7 +1,12 @@
-import css from "./NotFoundPage.module.css";
+import { Button } from "../../components/Button/Button.jsx";
+// import css from "./NotFoundPage.module.css";
 
 const NotFoundPage = () => {
-  return <div className={css.box}>NotFoundPage</div>;
+  return (
+    <>
+      <Button linkRef="/catalog">View Now</Button>
+    </>
+  );
 };
 
 export default NotFoundPage;

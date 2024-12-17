@@ -2,7 +2,7 @@
   width: 1440px;
   height: 696px;
   background-color: rgba(0, 0, 0, 0.2);
-  background-image: url("/src/img/picture.png");
+  background-image: url("/src/assets/img/picture@2x.png");
   background-position: center;
   background-repeat: no-repeat;
   margin: 0 auto;
@@ -10,7 +10,7 @@
 
 @media (min-resolution: 192dpi) {
   .box {
-    background-image: url("/src/img/picture@2x.png");
+    background-image: url("/src/assets/img/picture@2x.png");
   }
 }
 

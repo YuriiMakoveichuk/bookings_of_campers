@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 
-import css from "./Navigation.module.css";
 import { Container } from "../Container/Container.jsx";
+
+import css from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
@@ -10,7 +11,7 @@ const Navigation = () => {
       <header className={css.header}>
         <Container>
           <div className={css.box}>
-            <img src="./src/img/Logo.svg" alt="logo" />
+            <img src="./img/Logo.svg" alt="logo" />
             <nav className={css.nav}>
               <NavLink
                 className={({ isActive }) =>

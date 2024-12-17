@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import { Container } from "../Container/Container.jsx";
 
-import logo from "../../img/Logo.svg";
+import logo from "../../img/logo.svg";
 
 import css from "./Navigation.module.css";
 

@@ -10,4 +10,10 @@
   line-height: 1.5;
   letter-spacing: -0.01em;
   color: #fff;
+  transition: all 250ms linear;
+}
+
+.link:hover,
+.link:focus {
+  background-color: #d84343;
 }

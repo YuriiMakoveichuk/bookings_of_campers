@@ -4,7 +4,7 @@ import { Button } from "../../components/Button/Button.jsx";
 const NotFoundPage = () => {
   return (
     <>
-      <Button linkRef="/catalog">View Now</Button>
+      <Button linkRef="/">View Now</Button>
     </>
   );
 };

@@ -12,7 +12,7 @@ const HomePage = () => {
             <p className={css.text}>
               You can find everything you want in our catalog
             </p>
-            <Button linkRef="/catalog">View Now</Button>
+            <Button to="/catalog">View Now</Button>
           </div>
         </Container>
       </div>

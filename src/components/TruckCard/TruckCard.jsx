@@ -3,6 +3,10 @@ import sprite from "../../assets/img/sprite.svg";
 import css from "./TruckCard.module.css";
 
 const TruckCard = ({ item }) => {
+  const formatLocation = (location) => {
+    const [country, city] = location.split(", ");
+    return `${city}, ${country}`;
+  };
   return (
     <>
       <div className={css.box}>
@@ -35,7 +39,7 @@ const TruckCard = ({ item }) => {
               <svg className={css.svg} width={16} height={16}>
                 <use href={`${sprite}#icon-map`}></use>
               </svg>
-              {item.location}
+              {formatLocation(item.location)}
             </p>
           </div>
 
@@ -136,7 +140,9 @@ const TruckCard = ({ item }) => {
               </div>
             )}
           </div>
-          <Button to={`/catalog/${item.id}`}>Show more</Button>
+          <Button to={`/catalog/${item.id}`} target={"_blank"}>
+            Show more
+          </Button>
         </div>
       </div>
     </>

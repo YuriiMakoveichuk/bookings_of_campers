@@ -11,9 +11,10 @@ const TrucksList = () => {
   const [visibleCount, setVisibleCount] = useState(4);
 
   const campers = useSelector(selectCampers);
-  console.log("campers", campers.items);
 
   const campersAll = campers.items;
+
+  const disabled = campers.total;
 
   useEffect(() => {
     dispatch(fetchCampers());
@@ -22,24 +23,27 @@ const TrucksList = () => {
   const loadMore = () => {
     setVisibleCount((prevCount) => prevCount + 4);
   };
+
   return (
     <>
-      <ul className={css.list}>
-        {Array.isArray(campersAll) &&
-          campersAll.slice(0, visibleCount).map((item) => {
-            return (
-              <li key={item.id}>
-                <TruckCard item={item} />
-              </li>
-            );
-          })}
-      </ul>
-      <div className={css.box}>
-        {visibleCount && (
-          <button className={css.btn} type="button" onClick={loadMore}>
-            Load More
-          </button>
-        )}
+      <div>
+        <ul className={css.list}>
+          {Array.isArray(campersAll) &&
+            campersAll.slice(0, visibleCount).map((item) => {
+              return (
+                <li key={item.id}>
+                  <TruckCard item={item} />
+                </li>
+              );
+            })}
+        </ul>
+        <div className={css.box}>
+          {visibleCount < disabled && (
+            <button className={css.btn} type="button" onClick={loadMore}>
+              Load More
+            </button>
+          )}
+        </div>
       </div>
     </>
   );

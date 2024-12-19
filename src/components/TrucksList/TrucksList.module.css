@@ -20,4 +20,10 @@
   letter-spacing: -0.01em;
   color: #101828;
   background-color: inherit;
+  transition: all 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+  border: 1px solid #d84343;
 }

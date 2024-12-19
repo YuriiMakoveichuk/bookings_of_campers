@@ -1,0 +1,87 @@
+.box {
+  width: 360px;
+}
+
+.input {
+  border-radius: 12px;
+  border: inherit;
+  padding: 18px 20px;
+  width: 360px;
+  height: 56px;
+  background-color: #f7f7f7;
+}
+
+.input:focus {
+  outline: none;
+  color: #101828;
+}
+
+.boxInput {
+  position: relative;
+  display: inline-block;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+
+.boxInput .input {
+  padding-left: 46px;
+}
+
+.boxInput .svg {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  fill: #6c717b;
+}
+
+.textForm {
+  margin-bottom: 32px;
+}
+
+.titleForm {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin-bottom: 24px;
+}
+
+.line {
+  border: 1px solid #dadde1;
+  margin-bottom: 24px;
+}
+
+.customCheckboxes {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.boxCheck {
+  margin-bottom: 40px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 200px;
+  border: none;
+  height: 56px;
+  padding: 19px 54px;
+  background-color: #e44848;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #fff;
+  transition: all 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #d84343;
+}

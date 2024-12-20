@@ -6,10 +6,22 @@ export const instance = axios.create({
 });
 
 export const fetchCampers = createAsyncThunk(
-  "campers/fetchAll",
+  "campers/fetchCampers",
   async (_, thunkAPI) => {
     try {
       const { data } = await instance.get("campers");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchOneCamper = createAsyncThunk(
+  "campers/fetchOneCamper",
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await instance.get(`campers/${id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

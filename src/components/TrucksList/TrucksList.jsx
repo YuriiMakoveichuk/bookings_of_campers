@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectCampers } from "../../redux/campers/selectors.js";
 import { useEffect, useState } from "react";
+
+import { selectCampers } from "../../redux/campers/selectors.js";
 import { fetchCampers } from "../../redux/campers/operations.js";
+import TruckCard from "../TruckCard/TruckCard.jsx";
 
 import css from "./TrucksList.module.css";
-import TruckCard from "../TruckCard/TruckCard.jsx";
 
 const TrucksList = () => {
   const dispatch = useDispatch();

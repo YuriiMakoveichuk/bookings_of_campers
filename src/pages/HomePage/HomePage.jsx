@@ -1,6 +1,7 @@
 import { Container } from "../../components/Container/Container.jsx";
-import css from "./HomePage.module.css";
 import { Button } from "../../components/Button/Button.jsx";
+
+import css from "./HomePage.module.css";
 
 const HomePage = () => {
   return (

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./operations.js";
+import { fetchCampers, fetchOneCamper } from "./operations.js";
 
 const INITIAL_STATE = {
   items: [],
@@ -21,6 +21,19 @@ const campersSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchCampers.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(fetchOneCamper.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchOneCamper.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchOneCamper.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       }),

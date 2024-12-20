@@ -1,7 +1,10 @@
-import css from "./FiltersForm.module.css";
-import sprite from "../../assets/img/sprite.svg";
-import { Checkbox } from "../Checkbox/Checkbox.jsx";
 import clsx from "clsx";
+
+import { Checkbox } from "../Checkbox/Checkbox.jsx";
+
+import sprite from "../../assets/img/sprite.svg";
+
+import css from "./FiltersForm.module.css";
 
 const FiltersForm = () => {
   return (

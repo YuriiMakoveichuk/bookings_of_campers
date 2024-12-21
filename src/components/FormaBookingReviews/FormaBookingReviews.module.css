@@ -31,13 +31,13 @@
   padding: 18px;
   width: 527px;
   height: 60px;
-  background-color: #f7f7f7;
+  background-color: #f7f7f7 !important;
   border: none;
-  color: #101828;
+  color: #101828 !important;
 }
 
 .field:focus {
-  background: #f7f7f7 !important;
+  background-color: #f7f7f7 !important;
   outline: none;
 }
 

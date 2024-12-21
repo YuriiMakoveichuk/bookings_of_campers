@@ -8,6 +8,8 @@ import clsx from "clsx";
 
 import "react-datepicker/dist/react-datepicker.css";
 
+import "./datepickerStyles.css";
+
 import css from "./FormaBookingReviews.module.css";
 
 const initialValues = {

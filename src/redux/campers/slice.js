@@ -5,11 +5,24 @@ const INITIAL_STATE = {
   items: [],
   loading: false,
   error: null,
+  likes: JSON.parse(localStorage.getItem("likes")) || [],
 };
 
 const campersSlice = createSlice({
   name: "campers",
   initialState: INITIAL_STATE,
+  reducers: {
+    toggleLike: (state, action) => {
+      const id = action.payload;
+      const isLike = state.likes.includes(id);
+      if (isLike) {
+        state.likes = state.likes.filter((likeId) => likeId !== id);
+      } else {
+        state.likes.push(id);
+      }
+      localStorage.setItem("likes", JSON.stringify(state.likes));
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(fetchCampers.pending, (state) => {
@@ -24,7 +37,6 @@ const campersSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-
       .addCase(fetchOneCamper.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -39,4 +51,5 @@ const campersSlice = createSlice({
       }),
 });
 
+export const { toggleLike } = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

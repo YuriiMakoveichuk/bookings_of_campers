@@ -2,42 +2,17 @@
   width: 360px;
 }
 
-.input {
-  border-radius: 12px;
-  border: inherit;
-  padding: 18px 20px;
-  width: 360px;
-  height: 56px;
-  background-color: #f7f7f7;
-}
-
-.input:focus {
-  outline: none;
-  color: #101828;
-}
-
-.boxInput {
-  position: relative;
-  display: inline-block;
-  margin-top: 8px;
-  margin-bottom: 40px;
-}
-
-.boxInput .input {
-  padding-left: 46px;
-}
-
-.boxInput .svg {
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+.svg {
   fill: #6c717b;
 }
 
-.svg {
-  fill: #fff;
+.svgFocused {
+  fill: #101828;
+}
+
+.boxInput {
+  margin-top: 8px;
+  margin-bottom: 40px;
 }
 
 .textForm {

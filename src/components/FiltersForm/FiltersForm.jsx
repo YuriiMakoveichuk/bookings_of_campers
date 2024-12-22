@@ -2,15 +2,14 @@ import clsx from "clsx";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
-
-import { Checkbox } from "../Checkbox/Checkbox.jsx";
-
-import sprite from "../../assets/img/sprite.svg";
+import { components } from "react-select";
 
 import { selectCampers } from "../../redux/campers/selectors.js";
 import { useEffect, useState } from "react";
 import { fetchCampers } from "../../redux/campers/operations.js";
-import { components } from "react-select";
+import Checkbox from "../Checkbox/Checkbox.jsx";
+
+import sprite from "../../assets/img/sprite.svg";
 
 import css from "./FiltersForm.module.css";
 
@@ -60,21 +59,40 @@ const customStyles = {
 
 const FiltersForm = () => {
   const dispatch = useDispatch();
+
+  const [cities, setCities] = useState([]);
   const [formData, setFormData] = useState({
-    city: null,
-    equipment: [],
-    vehicleType: [],
+    AC: false,
+    automatic: false,
+    petrol: false,
+    kitchen: false,
+    TV: false,
+    bathroom: false,
+    radio: false,
+    refrigerator: false,
+    water: false,
+    gas: false,
+    microwave: false,
+    van: false,
+    fullyIntegrated: false,
+    alcove: false,
   });
 
   const campers = useSelector(selectCampers);
 
   const locations = campers.items;
 
+  const uniqueCities = new Set();
   const locationsAll = Array.isArray(locations)
-    ? locations.map((item) => {
-        const [country, city] = item.location.split(", ");
-        return { label: `${city}, ${country}` };
-      })
+    ? locations
+        .map((item) => {
+          const [country, city] = item.location.split(", ");
+          if (!uniqueCities.has(city)) {
+            uniqueCities.add(city);
+            return { label: `${city}, ${country}`, value: city };
+          }
+        })
+        .filter(Boolean)
     : [];
 
   useEffect(() => {
@@ -82,26 +100,24 @@ const FiltersForm = () => {
   }, [dispatch]);
 
   const handleSelectChange = (selectedOption) => {
-    setFormData({ ...formData, city: selectedOption });
+    setCities([...cities, selectedOption]);
   };
 
-  const handleCheckboxChange = (event) => {
-    console.log("hello");
-
-    const { name, checked, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: checked
-        ? [...formData[name], value]
-        : formData[name].filter((item) => item !== value),
-    });
+  const handleChange = (event) => {
+    const { name, checked } = event.target;
+    setFormData({ ...formData, [name]: checked });
   };
 
   const handleSubmit = (event) => {
-    toast.success("Filtering successful!");
-    console.log("Filter: ", formData);
     event.preventDefault();
+    const filtering = {
+      location: cities.map((item) => item.label),
+      filters: Object.keys(formData).filter((key) => formData[key] === true),
+    };
+    console.log("Filtering:", filtering);
+    toast.success("Filtering successful!");
   };
+
   return (
     <>
       <form className={css.box} onSubmit={handleSubmit}>
@@ -140,82 +156,90 @@ const FiltersForm = () => {
           <Checkbox
             id={"checkbox1"}
             icon={"icon-wind"}
-            label={"AC"}
-            onChange={handleCheckboxChange}
-            value={"AC"}
-            name="equipment"
+            label="AC"
+            onChange={handleChange}
+            checked={formData.AC}
+            name="AC"
           />
           <Checkbox
             id={"checkbox2"}
             icon={"icon-diagram"}
             label={"Automatic"}
-            onChange={handleCheckboxChange}
-            value={"Automatic"}
-            name="equipment"
+            onChange={handleChange}
+            checked={formData.automatic}
+            name="automatic"
           />
           <Checkbox
             id={"checkbox3"}
             icon={"icon-fuel"}
             label={"Petrol"}
-            onChange={handleCheckboxChange}
-            value={"Petrol"}
-            name="equipment"
+            onChange={handleChange}
+            checked={formData.petrol}
+            name="petrol"
           />
           <Checkbox
             id={"checkbox4"}
             icon={"icon-cup-hot"}
             label={"Kitchen"}
-            onChange={handleCheckboxChange}
-            value={"Kitchen"}
+            onChange={handleChange}
+            checked={formData.kitchen}
+            name="kitchen"
           />
           <Checkbox
             id={"checkbox5"}
             icon={"icon-tv"}
             label={"TV"}
-            onChange={handleCheckboxChange}
-            value={"TV"}
+            onChange={handleChange}
+            checked={formData.TV}
+            name="TV"
           />
           <Checkbox
             id={"checkbox6"}
             icon={"icon-ph_shower"}
             label={"Bathroom"}
-            onChange={handleCheckboxChange}
-            value={"Bathroom"}
+            onChange={handleChange}
+            checked={formData.bathroom}
+            name="bathroom"
           />
           <Checkbox
             id={"checkbox7"}
             icon={"icon-radios"}
             label={"Radio"}
-            onChange={handleCheckboxChange}
-            value={"Radio"}
+            onChange={handleChange}
+            checked={formData.radio}
+            name="radio"
           />
           <Checkbox
             id={"checkbox8"}
             icon={"icon-solar_fridge-outline"}
             label={"Refrigerator"}
-            onChange={handleCheckboxChange}
-            value={"Refrigerator"}
+            onChange={handleChange}
+            checked={formData.refrigerator}
+            name="refrigerator"
           />
           <Checkbox
             id={"checkbox9"}
             icon={"icon-ion_water-outline"}
             label={"Water"}
-            onChange={handleCheckboxChange}
-            value={"Water"}
+            onChange={handleChange}
+            checked={formData.water}
+            name="water"
           />
           <Checkbox
             id={"checkbox10"}
             icon={"icon-gas"}
             label={"Gas"}
-            onChange={handleCheckboxChange}
-            value={"Gas"}
+            onChange={handleChange}
+            checked={formData.gas}
+            name="gas"
           />
           <Checkbox
             id={"checkbox11"}
             icon={"icon-lucide_microwave"}
             label={"Microwave"}
-            onChange={handleCheckboxChange}
-            value={"Microwave"}
+            onChange={handleChange}
+            checked={formData.microwave}
+            name="microwave"
           />
         </div>
 
@@ -227,22 +251,26 @@ const FiltersForm = () => {
             id={"box1"}
             icon={"icon-bi_grid-1x2"}
             label={"Van"}
-            onChange={handleCheckboxChange}
-            value={"Van"}
+            onChange={handleChange}
+            checked={formData.van}
+            name="van"
           />
+
           <Checkbox
             id={"box2"}
             icon={"icon-bi_grid"}
             label={"Fully Integrated"}
-            onChange={handleCheckboxChange}
-            value={"FullyIntegrated"}
+            onChange={handleChange}
+            checked={formData.fullyIntegrated}
+            name="fullyIntegrated"
           />
           <Checkbox
             id={"box3"}
             icon={"icon-bi_grid-3x3-gap"}
             label={"Alcove"}
-            onChange={handleCheckboxChange}
-            value={"Alcove"}
+            onChange={handleChange}
+            checked={formData.alcove}
+            name="alcove"
           />
         </div>
         <button className={css.btn} type="submit">

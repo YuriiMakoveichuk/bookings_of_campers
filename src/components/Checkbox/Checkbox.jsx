@@ -2,11 +2,17 @@ import sprite from "../../assets/img/sprite.svg";
 
 import css from "./Checkbox.module.css";
 
-export const Checkbox = ({ id, icon, label, value }) => {
+const Checkbox = ({ label, checked, onChange, name, icon }) => {
   return (
     <div className={css.customCheckbox}>
-      <input type="checkbox" id={id} value={value} name={name} />
-      <label htmlFor={id}>
+      <input
+        type="checkbox"
+        id={name}
+        checked={checked}
+        onChange={onChange}
+        name={name}
+      />
+      <label htmlFor={name}>
         <svg className={css.svg} width={32} height={32}>
           <use href={`${sprite}#${icon}`}></use>
         </svg>
@@ -15,3 +21,5 @@ export const Checkbox = ({ id, icon, label, value }) => {
     </div>
   );
 };
+
+export default Checkbox;

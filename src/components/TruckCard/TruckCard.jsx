@@ -37,7 +37,7 @@ const TruckCard = ({ item }) => {
           <div className={css.boxTitle}>
             <h3 className={css.title}>{item.name}</h3>
             <div className={css.boxPrice}>
-              <p>&euro;{item.price}</p>
+              <p>&euro;{item.price}.00</p>
               <svg
                 className={clsx(`${css.svg} ${isLike ? css.like : ""}`)}
                 width={24}

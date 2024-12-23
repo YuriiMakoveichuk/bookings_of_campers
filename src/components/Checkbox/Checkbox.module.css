@@ -5,7 +5,8 @@
   margin-bottom: 10px;
 }
 
-.customCheckbox input[type="checkbox"] {
+.customCheckbox input[type="checkbox"],
+.customCheckbox input[type="radio"] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -30,6 +31,7 @@
   text-align: center;
 }
 
-.customCheckbox input[type="checkbox"]:checked + label {
+.customCheckbox input[type="checkbox"]:checked + label,
+.customCheckbox input[type="radio"]:checked + label {
   outline: 1px solid #e44848;
 }

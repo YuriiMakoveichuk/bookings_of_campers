@@ -2,11 +2,18 @@ import sprite from "../../assets/img/sprite.svg";
 
 import css from "./Checkbox.module.css";
 
-const Checkbox = ({ label, checked, onChange, name, icon }) => {
+const Checkbox = ({
+  label,
+  checked,
+  onChange,
+  name,
+  icon,
+  type = "checkbox",
+}) => {
   return (
     <div className={css.customCheckbox}>
       <input
-        type="checkbox"
+        type={type}
         id={name}
         checked={checked}
         onChange={onChange}
